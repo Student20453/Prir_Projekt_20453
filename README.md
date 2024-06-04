@@ -23,7 +23,12 @@ https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops
   - `parser.py`: Skrypt do parsowania danych.
   - `requirements.txt`: Lista zależności dla scraper.
 
+## Wymagania
+1. Docker
+2. Python 3.8+
+
 ## Jak uruchomić
 Instrukcje dotyczące uruchamiania projektu:
 1. Uruchom Docker Compose:
+   ```sh
    docker-compose up
