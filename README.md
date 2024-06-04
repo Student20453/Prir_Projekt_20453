@@ -2,7 +2,7 @@
 
 # Projekt PRiR Autor: Filip Kłos 20453
 Zadaniem tego projektu jest webscraperowanie danych adresów url, przez interfejs graficzny flask, a następnie wysłanie tych danych do osobnego kontenera,
-który jest bazą MongoDB
+który jest bazą MongoDB. Podany webscraper jest przystosowany do pobierania danych z serwisów w których kupuje się produkty
 ### Przykładowe strony które, używałem do webscraperowania
 - https://webscraper.io/test-sites/e-commerce/allinone/phones/touch
 - https://webscraper.io/test-sites/e-commerce/allinone/computers/tablets
