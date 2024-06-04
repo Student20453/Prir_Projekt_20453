@@ -24,7 +24,8 @@ który jest bazą MongoDB. Podany webscraper jest przystosowany do pobierania da
 
 ## Wymagania
 1. Docker
-2. Python 3.8+
+2. Docker-compose
+3. Python 3.8+
 
 ## Jak uruchomić
 1. Uruchom Docker Compose:
