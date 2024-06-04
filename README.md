@@ -1,7 +1,6 @@
-Projekt PRiR
-Autor: Filip Kłos 20453
 
-# Projekt
+
+# Projekt PRiR Autor: Filip Kłos 20453
 Zadaniem tego projektu jest webscraperowanie danych adresów url, przez interfejs graficzny flask, a następnie wysłanie tych danych do osobnego kontenera,
 który jest bazą MongoDB
 Przykładowe stronki które, używałem do webscraperowania
@@ -28,7 +27,6 @@ https://webscraper.io/test-sites/e-commerce/allinone/computers/laptops
 2. Python 3.8+
 
 ## Jak uruchomić
-Instrukcje dotyczące uruchamiania projektu:
 1. Uruchom Docker Compose:
    ```sh
    docker-compose up
