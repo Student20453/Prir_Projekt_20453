@@ -14,7 +14,7 @@ który jest bazą MongoDB
   - `app.py`: Główny plik aplikacji Flask.
   - `dockerfile`: Plik Dockerfile dla aplikacji Flask.
   - `requirements.txt`: Lista zależności dla aplikacji Flask.
-  - `static/`: Katalog z plikami statycznymi.
+  - `static/`: Katalog z plikiem CSS.
   - `templates/`: Katalog z szablonami HTML.
 - `scraper/`: Katalog z skryptami scraper.
   - `fetcher.py`: Skrypt do pobierania danych.
