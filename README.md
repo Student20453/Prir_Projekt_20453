@@ -29,4 +29,4 @@ który jest bazą MongoDB
 ## Jak uruchomić
 1. Uruchom Docker Compose:
    ```sh
-   docker-compose up
+   docker-compose up --build
