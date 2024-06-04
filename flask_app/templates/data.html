@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt 20453</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Projekt Filip Kłos 20453</h1>
+    <h2>Strona do połączenia się z bazą danych</h2>
+    <!-- Formularz, w którym użytkownik wybiera jakie dane chce wyszukać na podstawie
+    wartości podanej w polu oraz określa jak te dane mają być posortowane -->
+    <form id="search-form">
+        <label for="field">Pole do wyszukiwania:</label>
+        <select id="field" name="field">
+            <option value="title">Tytuł</option>
+            <option value="price">Cena</option>
+            <option value="description">Opis</option>
+            <option value="rating">Ocena</option>
+            <option value="reviews">Opinie</option>
+        </select>
+        
+        <label for="value">Wartość, jeżeli chcesz wyszukać wszystkie dane z bazy, zostaw te pole puste:</label>
+        <input type="text" id="value" name="value"><br>
+        
+        <label for="sort">Sortuj według:</label>
+        <select id="sort" name="sort">
+            <option value="title">Tytuł</option>
+            <option value="price">Cena</option>
+            <option value="rating">Ocena</option>
+            <option value="reviews">Opinie</option>
+        </select>
+        
+        <label for="order">Kolejność:</label>
+        <select id="order" name="order">
+            <option value="asc">Rosnąco</option>
+            <option value="desc">Malejąco</option>
+        </select>
+        
+        <label>Wyszukaj dane:</label>
+        <button type="button" onclick="fetchData()">Szukaj</button>
+    </form>
+    
+    <div id="results"></div>
+    
+    <!-- Funkcja, której zadaniem jest przyjęcie opcji wybranych przez użytkownika oraz podanych danych.
+    Nastepnie wysyła je do funkcji get_data w app.py by to wykonało robotę -->
+    <script>
+        async function fetchData() {
+            const field = document.getElementById('field').value;
+            const value = document.getElementById('value').value;
+            const sort = document.getElementById('sort').value;
+            const order = document.getElementById('order').value;
+            
+            const query = new URLSearchParams({
+                sort: sort,
+                order: order,
+                field: field,
+                value: value
+            });
+
+            const response = await fetch(`/get_data?${query.toString()}`);
+            const data = await response.json();
+            document.getElementById('results').innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+</html>

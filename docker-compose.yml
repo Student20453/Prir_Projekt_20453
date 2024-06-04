@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  flask_app:
+    build:
+      context: ./flask_app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - scraper
+      - database
+    networks:
+      - my_network
+
+  scraper:
+    build:
+      context: ./scraper
+    expose:
+      - "8000"
+    networks:
+      - my_network
+
+  database:
+    image: mongo:latest
+    hostname: database
+    environment:
+      - MONGO_INITDB_DATABASE=projekt_baza
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    ports:
+      - "27017:27017"
+    networks:
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge

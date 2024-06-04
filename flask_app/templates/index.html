@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Projekt 20453</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Projekt Filip Klos 20453</h1>
+    <h2>Strona główna z webscraperem</h2>
+
+    <!-- Formularz, który przyjmuje adres url stron, którą użytkownik chce zwebscraperować
+    oraz na podstawie checkboxu, to jakie wartości ma zwrócić. Po wciśnięciu przycisku wykonuje się
+    funkcja, która wysyła dane do silnika webscraperowego --> 
+    
+    <form id="scrape-form">
+        <label for="urls">Podaj adresy URL, kazda oddziel przecinkiem</label>
+        <textarea id="urls" name="urls" rows="4" cols="50"></textarea><br>
+        
+        <label for="title">Wyciagnij tytul:</label>
+        <input type="checkbox" id="title" name="title" checked><br>
+        
+        <label for="price">Wyciagnij cene:</label>
+        <input type="checkbox" id="price" name="price" checked><br>
+        
+        <label for="description">Wyciagnij opis:</label>
+        <input type="checkbox" id="description" name="description" checked><br>
+        
+        <label for="rating">Wyciagnij ocene:</label>
+        <input type="checkbox" id="rating" name="rating" checked><br>
+
+        <label for="reviews">Wyciagnij ilosc opinii:</label>
+        <input type="checkbox" id="reviews" name="reviews" checked><br>
+        
+        <button type="button" onclick="startScraping()">Scrapuj</button>
+    </form>
+    <button type="button" onclick="window.location.href='/data'">Zobacz dane</button>
+    <div id="results"></div>
+
+    <!-- Zadaniem tej funkcji jest wysłanie adresów url do silnika webscraperowego oraz określenie
+    tego co silnik ma szukać w danym adresie -->
+    <script>
+        async function startScraping() {
+            const urls = document.getElementById('urls').value.split(',').map(url => url.trim());
+            const profile = {
+                title: document.getElementById('title').checked,
+                price: document.getElementById('price').checked,
+                description: document.getElementById('description').checked,
+                rating: document.getElementById('rating').checked,
+                reviews: document.getElementById('reviews').checked
+            };
+            
+            const response = await fetch('/scrape', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ urls, profile }),
+            });
+            const data = await response.json();
+            document.getElementById('results').innerText = JSON.stringify(data, null, 2);
+        }
+    </script>
+</body>
+</html>
