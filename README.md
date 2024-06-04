@@ -20,7 +20,7 @@ który jest bazą MongoDB. Podany webscraper jest przystosowany do pobierania da
   - `fetcher.py`: Skrypt do pobierania danych.
   - `main.py`: Główny plik scraper.
   - `parser.py`: Skrypt do parsowania danych.
-  - `requirements.txt`: Lista zależności dla scraper.
+  - `requirements.txt`: Lista zależności dla silnika scraperowego.
 
 ## Wymagania
 1. Docker
